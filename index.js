@@ -59,7 +59,7 @@ function printJSdoc({ description, tags }) {
 }
 
 function printMethod(method) {
-  const returnType = method.return ? `: ${parseType(method.return.type)}` : "";
+  const returnType = method.return ? `: ${parseType(method.return.type)}` : ": void";
   const JSDoc = printJSdoc(method.jsdoc);
   const params = method.params.map(({ name, type }) => `${name}: ${parseType(type, name.startsWith("..."))}`).join(", ");
   return indent(4)`${JSDoc}\n${method.name}(${params})${returnType};`;
